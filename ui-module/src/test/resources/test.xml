@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <listeners>
+        <listener class-name="com.automation.ui.listeners.TestListener"></listener>
+    </listeners>
+    <test name="Regression Test" enabled="true">
+        <packages>
+            <package name="com.automation.ui.tests.*"/>
+        </packages>
+    </test>
+</suite>

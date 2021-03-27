@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id("io.qameta.allure") version "2.6.0"
+}
+
+version 'unspecified'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://dl.bintray.com/epam/reportportal" }
+    maven { url "https://jitpack.io" }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+allure {
+    version = "2.13.8"
+    useTestNG {
+        version = "6.13.1"
+    }
+    aspectjweaver = true
+    autoconfigure = true
+    downloadLink = "https://repo1.maven.org/maven2/io/qameta/allure/allure-commandline/2.13.8/allure-commandline-2.13.8.zip"
+}
+
+dependencies {
+    implementation group: 'com.codeborne', name: 'selenide', version:'5.15.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+    implementation 'org.testng:testng:6.13.1'
+
+    testImplementation 'com.epam.reportportal:agent-java-testng:5.0.11'
+
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.8'
+    implementation group: 'io.qameta.allure', name: 'allure-java-commons', version: '2.13.8'
+    implementation group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.8'
+    implementation group: 'io.qameta.allure', name: 'allure-gradle', version: '2.8.1'
+    implementation group: 'io.qameta.allure', name: 'allure-assertj', version: '2.13.8'
+
+    compile 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'org.springframework', name: 'spring-test', version: '5.3.5'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+    useTestNG()
+}
+
+tasks.withType(Test) {
+    useTestNG() {
+        useDefaultListeners = false
+    }
+    ignoreFailures = true
+    testLogging { events "passed", "skipped", "failed" }
+}
