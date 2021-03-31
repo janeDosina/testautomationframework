@@ -62,6 +62,14 @@ test {
     useTestNG()
 }
 
+subprojects {
+    sonarqube {
+        properties {
+            property "sonar.sources", "src"
+        }
+    }
+}
+
 tasks.withType(Test) {
     useTestNG() {
         useDefaultListeners = false
