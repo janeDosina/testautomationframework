@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LoginTest extends BaseTest {
 
     @Test
-    @DisplayName("Get user information")
+    @DisplayName("Get user information from profile")
     public void test() {
         UserDTO response = userApi.getUserApi()
                 .execute(ResponseBody::prettyPeek)
