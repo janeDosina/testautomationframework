@@ -1,31 +1,16 @@
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '2.4.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id("io.qameta.allure") version "2.6.0"
 }
 
-version 'unspecified'
+apply from: rootProject.file('gradle/dependencies.gradle')
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven { url "https://dl.bintray.com/epam/reportportal" }
-    maven { url "https://jitpack.io" }
-}
+jar.enabled = true
+bootJar.enabled = false
 
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-}
-
-bootJar {
-    enabled = false
-}
-
-jar {
-    enabled = true
 }
 
 allure {
@@ -57,26 +42,14 @@ dependencies {
     implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.13.8'
 
     compile "com.fasterxml.jackson.core:jackson-databind:2.11.3"
-    compile 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation group: 'org.springframework', name: 'spring-test', version: '5.3.5'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-subprojects {
-    sonarqube {
-        properties {
-            property "sonar.sources", "src"
-        }
-    }
+    compile('org.springframework:spring-core')
+    compile('org.springframework:spring-context')
+    compile('org.springframework:spring-beans')
+    compile('org.springframework.boot:spring-boot-starter-test')
 }
 
 tasks.withType(Test) {
+    useJUnitPlatform()
     ignoreFailures = true
     scanForTestClasses = false
     testLogging {
