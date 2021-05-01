@@ -24,7 +24,7 @@ public class SideBarTest extends BaseTest {
     }
 
     @Test(dataProvider = "sideBarButtons", dataProviderClass = SideBarButtons.class,
-            description = "Check that side bar buttons are displayed")
+            description = "Check that side bar buttons are displayed.")
     public void checkSideBarButtonsPresent(String sideBarBtnName) {
         dashboardPageSteps.verifySideBarButtonDisplayed(sideBarBtnName);
     }
