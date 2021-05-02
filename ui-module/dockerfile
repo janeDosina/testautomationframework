@@ -5,4 +5,4 @@ WORKDIR /work
 COPY ./src/ /work/src
 COPY build.gradle /work/build.gradle
 
-CMD gradle test
+ENTRYPOINT gradle test

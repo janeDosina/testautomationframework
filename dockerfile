@@ -9,4 +9,4 @@ COPY build.gradle /work/build.gradle
 COPY build.gradle /work/api-module/build.gradle
 COPY build.gradle /work/ui-module/build.gradle
 
-CMD gradle test
+ENTRYPOINT gradle test
