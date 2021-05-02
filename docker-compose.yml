@@ -14,18 +14,18 @@
 version: '2.4'
 services:
 
-  api-module-tests: #docker run -it -v ${PWD}:/work -w /work -p 5000:5000 TAF/api-module:1.0.0 /bin/sh
+  api-module-tests: #docker run -it -v ${PWD}:/work -w /work -p 5000:5000 TAF/api_module:1.0.0 /bin/sh
     container_name: TAF_api_module
-    image: TAF/api-module:1.0.0
+    image: TAF/api_module:1.0.0
     build: ./api-module
     volumes:
       - ./api-module/src/:/work/
     ports:
       - 5000:5000
 
-  ui-module-tests: #docker run -it -v ${PWD}:/work -w /work -p 5001:5000 TAF/ui-module:1.0.0 /bin/sh
+  ui-module-tests: #docker run -it -v ${PWD}:/work -w /work -p 5001:5000 TAF/ui_module:1.0.0 /bin/sh
     container_name: TAF_ui_module
-    image: TAF/ui-module:1.0.0
+    image: TAF/ui_module:1.0.0
     build: ./ui-module
     volumes:
       - ./ui-module/src/:/work/
