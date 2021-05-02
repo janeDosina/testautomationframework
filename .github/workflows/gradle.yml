@@ -26,6 +26,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: docker build api-module
-      run: docker build ./api-module -t TAF/api_module:1.0.0
+      run: docker build ./api-module -t taf/api_module:1.0.0
     - name: docker build ui-module
-      run: docker build ./ui-module -t TAF/ui_module:1.0.0
+      run: docker build ./ui-module -t taf/ui_module:1.0.0
