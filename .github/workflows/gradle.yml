@@ -25,3 +25,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: docker build api-module
+      run: docker build ./api-module -t TAF/api-module:1.0.0
+    - name: docker build ui-module
+      run: docker build ./ui-module -t TAF/ui-module:1.0.0
