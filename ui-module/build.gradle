@@ -36,12 +36,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-test')
 }
 
-test {
-    useTestNG()
-    jvmArgs = jvmArgs << "-noverify"
-}
-
 tasks.withType(Test) {
     ignoreFailures = true
     testLogging { events "passed", "skipped", "failed" }
+    useTestNG()
+    jvmArgs = jvmArgs << "-noverify"
 }

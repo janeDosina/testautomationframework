@@ -1,8 +1,8 @@
 package com.automation.api.tests;
 
 import com.automation.api.BaseTest;
-import com.automation.api.models.enums.AccountType;
-import com.automation.api.models.enums.UserRole;
+import com.automation.api.models.userConstants.AccountType;
+import com.automation.api.models.userConstants.UserRole;
 import com.automation.api.models.user.UserDTO;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;

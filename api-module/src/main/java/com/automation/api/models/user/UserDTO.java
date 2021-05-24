@@ -1,7 +1,7 @@
 package com.automation.api.models.user;
 
-import com.automation.api.models.enums.AccountType;
-import com.automation.api.models.enums.UserRole;
+import com.automation.api.models.userConstants.AccountType;
+import com.automation.api.models.userConstants.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
