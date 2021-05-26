@@ -1,4 +1,4 @@
 rest:
   config:
-    accessToken: 7019d0f8-1bd2-4dff-ad16-bf11cbe6c7e0
+    accessToken:
     baseUrl: http://localhost:4040/api/v1
