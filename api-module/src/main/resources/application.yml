@@ -1,0 +1,4 @@
+rest:
+  config:
+    accessToken:
+    baseUrl: http://localhost:4040/api/v1

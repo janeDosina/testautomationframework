@@ -1,0 +1,52 @@
+plugins {
+    id("io.qameta.allure") version "2.6.0"
+}
+
+apply from: rootProject.file('gradle/dependencies.gradle')
+
+jar.enabled = true
+bootJar.enabled = false
+
+allure {
+    version = "2.13.8"
+    useJUnit5{
+        version = '2.13.8'
+    }
+    aspectjweaver = true
+    autoconfigure = true
+    downloadLink = "https://repo1.maven.org/maven2/io/qameta/allure/allure-commandline/2.13.8/allure-commandline-2.13.8.zip"
+}
+
+dependencies {
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.2.0'
+    implementation group: 'io.rest-assured', name: 'rest-assured-common', version: '4.2.0'
+    implementation group: 'io.rest-assured', name: 'json-path', version: '4.2.0'
+    implementation group: 'io.rest-assured', name: 'xml-path', version: '4.2.0'
+
+    testImplementation(platform("org.junit:junit-bom:5.7.0"))
+    testImplementation "org.junit.platform:junit-platform-commons:1.7.0"
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.13.8'
+    implementation group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+    implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.13.8'
+
+    compile "com.fasterxml.jackson.core:jackson-databind:2.11.3"
+    compile('org.springframework:spring-core')
+    compile('org.springframework:spring-context')
+    compile('org.springframework:spring-beans')
+    compile('org.springframework.boot:spring-boot-starter-test')
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    ignoreFailures = true
+    scanForTestClasses = false
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
